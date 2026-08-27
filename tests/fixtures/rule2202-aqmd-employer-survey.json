@@ -1,0 +1,50 @@
+{
+  "worksiteId": "TEST-SITE-2202",
+  "reportingYear": 2025,
+  "peakWindow": "06:00-10:00",
+  "surveyDays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  "records": [
+    {
+      "anonymousId": "survey-001",
+      "oneWayMiles": 10,
+      "primarilyPeakWindow": "yes",
+      "modes": [
+        "Drive Alone",
+        "Drive Alone",
+        "Telecommute (Work from home/remote)",
+        "Drive Alone",
+        "Drive Alone"
+      ]
+    },
+    {
+      "anonymousId": "survey-002",
+      "oneWayMiles": 8,
+      "primarilyPeakWindow": "yes",
+      "modes": [
+        "2 persons in vehicle",
+        "2 persons in vehicle",
+        "2 persons in vehicle",
+        "Telecommute (Work from home/remote)",
+        "2 persons in vehicle"
+      ]
+    },
+    {
+      "anonymousId": "survey-003",
+      "oneWayMiles": 5,
+      "primarilyPeakWindow": "yes",
+      "modes": ["Bus", "Walk", "Bus", "Walk", "Bus"]
+    }
+  ],
+  "expected": {
+    "peakEmployeeCount": 3,
+    "surveyResponseRate": 1,
+    "weeklyVmtByMode": {
+      "drive_alone": 80,
+      "carpool": 64,
+      "transit": 30,
+      "walk": 20,
+      "telecommute": 36
+    },
+    "totalWeeklyVmt": 230
+  }
+}

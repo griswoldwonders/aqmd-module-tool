@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+    "ms-playwright.playwright",
+    "adpyke.codesnap",
+    "jumpinjackie.vscode-map-preview",
+    "litleleprikon.socket-io-vscode",
+    "rangav.vscode-thunder-client",
+    "mikestead.dotenv",
+    "ms-azuretools.vscode-docker"
+  ],
+  "unwantedRecommendations": []
+}
