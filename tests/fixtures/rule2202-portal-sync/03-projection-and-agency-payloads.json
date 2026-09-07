@@ -1,0 +1,73 @@
+{
+  "reporting_projection_request": {
+    "target": "south_coast_aqmd_rule_2202",
+    "target_version": "forms-after-2025-01-01",
+    "site_scope": "single_site",
+    "package_id": "pkg-2026-pasadena-001",
+    "include_only_accepted_evidence": true,
+    "include_program_activity": true,
+    "output_formats": ["xlsx", "pdf", "json_manifest"]
+  },
+  "reporting_projection_ready": {
+    "id": "rpx-2026-pasadena-001",
+    "target": "south_coast_aqmd_rule_2202",
+    "target_version": "forms-after-2025-01-01",
+    "status": "ready_for_responsible_official_review",
+    "readiness": "ready_for_responsible_official_review",
+    "package_id": "pkg-2026-pasadena-001",
+    "facility_id": "FAC-EXAMPLE-001",
+    "blocking_issue_count": 0,
+    "source_snapshot_hash": "sha256-source-snapshot-2026-001",
+    "calculation_run_id": "calc-2026-pasadena-001",
+    "artifacts": [
+      {
+        "type": "annual_registration_workbook",
+        "format": "xlsx",
+        "status": "generated",
+        "sha256": "sha256-workbook-2026-001"
+      },
+      {
+        "type": "review_package",
+        "format": "pdf",
+        "status": "generated",
+        "sha256": "sha256-review-package-2026-001"
+      },
+      {
+        "type": "source_manifest",
+        "format": "json",
+        "status": "generated",
+        "sha256": "sha256-manifest-2026-001"
+      }
+    ],
+    "human_review": {
+      "etc_status": "complete",
+      "responsible_official_status": "approved",
+      "agency_acceptance": "unknown"
+    }
+  },
+  "authorized_adapter_submission_receipt": {
+    "remote_reference": "AQMD-MOCK-2026-000001",
+    "submitted_at": "2026-08-27T16:30:00Z",
+    "status": "received",
+    "idempotency_key": "idem-package-2026-pasadena-001",
+    "package_hash": "sha256-source-snapshot-2026-001",
+    "agency_acceptance": "unknown"
+  },
+  "authorized_adapter_status": {
+    "remote_reference": "AQMD-MOCK-2026-000001",
+    "facility_id": "FAC-EXAMPLE-001",
+    "program_year": 2026,
+    "program_type": "ECRP",
+    "current_status": "Program Approved",
+    "current_status_date": "2026-08-30",
+    "permanent_due_date": "2027-08-31",
+    "due_date": "2027-08-31",
+    "notification_date": "2023-09-01",
+    "plan_reviewer": {
+      "name": "Mock Plan Reviewer",
+      "email": "reviewer@example.test"
+    },
+    "source": "authorized_adapter_mock",
+    "retrieved_at": "2026-08-31T17:00:00Z"
+  }
+}

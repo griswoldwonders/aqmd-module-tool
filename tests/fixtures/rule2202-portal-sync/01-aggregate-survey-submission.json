@@ -1,0 +1,74 @@
+{
+  "submission_type": "aggregate",
+  "revision": 1,
+  "reporting_period": {
+    "start_date": "2026-01-15",
+    "end_date": "2026-02-15",
+    "timezone": "America/Los_Angeles"
+  },
+  "population": {
+    "eligible_employee_count": 312,
+    "invited_count": 312,
+    "response_count": 248,
+    "population_source_evidence_id": "evd-employee-count-2026"
+  },
+  "aggregates": [
+    {
+      "mode": "drive_alone",
+      "respondent_count": 138,
+      "commute_days_per_week_mean": 3.8,
+      "one_way_miles_mean": 14.2,
+      "vehicle_occupancy_mean": 1.0,
+      "vehicle_powertrain_breakdown": {
+        "gasoline": 111,
+        "hybrid": 18,
+        "plug_in_hybrid": 3,
+        "battery_electric": 6
+      }
+    },
+    {
+      "mode": "carpool_passenger",
+      "respondent_count": 42,
+      "commute_days_per_week_mean": 3.4,
+      "one_way_miles_mean": 13.1,
+      "vehicle_occupancy_mean": 2.7,
+      "vehicle_powertrain_breakdown": {
+        "gasoline": 23,
+        "hybrid": 9,
+        "plug_in_hybrid": 2,
+        "battery_electric": 8
+      }
+    },
+    {
+      "mode": "transit",
+      "respondent_count": 31,
+      "commute_days_per_week_mean": 3.1,
+      "one_way_miles_mean": 11.6,
+      "vehicle_occupancy_mean": null,
+      "vehicle_powertrain_breakdown": {}
+    },
+    {
+      "mode": "telework",
+      "respondent_count": 37,
+      "commute_days_per_week_mean": 2.0,
+      "one_way_miles_mean": null,
+      "vehicle_occupancy_mean": null,
+      "vehicle_powertrain_breakdown": {}
+    }
+  ],
+  "data_quality_declaration": {
+    "duplicate_handling": "duplicates_removed_before_aggregation",
+    "missing_value_handling": "excluded_from_field_mean; retained_in_respondent_count",
+    "distance_method": "self_reported_one_way_distance",
+    "occupancy_method": "self_reported_typical_vehicle_occupancy",
+    "aggregation_method": "employer_reviewed_summary"
+  },
+  "source": {
+    "source_type": "employer_survey_export",
+    "source_reference": "survey-export-2026-01",
+    "document_id": "doc-survey-export-2026-01",
+    "uploaded_at": "2026-08-27T16:02:00Z"
+  },
+  "classification": "imported",
+  "submitter_note": "Aggregate summary prepared by the ETC from the closed employee survey."
+}

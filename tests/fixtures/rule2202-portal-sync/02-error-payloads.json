@@ -1,0 +1,59 @@
+{
+  "validation_error": {
+    "error": {
+      "code": "VALIDATION_FAILED",
+      "message": "The survey submission contains blocking data-quality issues.",
+      "request_id": "req-mock-validation-001",
+      "details": {
+        "issues": [
+          {
+            "code": "MODE_TOTAL_MISMATCH",
+            "path": "aggregates",
+            "severity": "blocking",
+            "message": "Mode respondent totals equal 248, but response_count is 250.",
+            "suggested_action": "Correct the aggregate counts or provide a reconciliation note."
+          },
+          {
+            "code": "OUT_OF_PERIOD_RECORD",
+            "path": "rows[17].collection_date",
+            "severity": "error",
+            "message": "The record falls outside the declared reporting period."
+          }
+        ]
+      }
+    }
+  },
+  "privacy_error": {
+    "error": {
+      "code": "FORBIDDEN_PERSONAL_DATA",
+      "message": "The submission contains a direct identifier or precise home-location field not permitted by this schema version.",
+      "request_id": "req-mock-privacy-001",
+      "details": {
+        "fields": ["employee_email", "home_street_address"],
+        "action": "Remove direct identifiers or use the approved pseudonymous-row schema."
+      }
+    }
+  },
+  "idempotency_conflict": {
+    "error": {
+      "code": "IDEMPOTENCY_KEY_REUSE",
+      "message": "The Idempotency-Key was already used with a different request body.",
+      "request_id": "req-mock-idempotency-001",
+      "details": {
+        "idempotency_key": "idem-body-hash-001",
+        "original_resource_id": "sub-mock-2026-001"
+      }
+    }
+  },
+  "facility_mismatch": {
+    "error": {
+      "code": "FACILITY_ID_MISMATCH",
+      "message": "The facility identifier does not match the worksite record approved for this package.",
+      "request_id": "req-mock-facility-001",
+      "details": {
+        "relay_worksite_id": "wrk-pasadena-001",
+        "provided_facility_id": "FAC-OTHER-999"
+      }
+    }
+  }
+}
