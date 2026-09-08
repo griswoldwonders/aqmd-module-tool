@@ -1,4 +1,3 @@
-import type { SaasSession } from "./saasApi";
 import type { Rule2202SurveyRecord } from "./rule2202Api";
 
 export const RELAY_RIDER_AQMD_FEED_CONTRACT = "rr-aqmd-feed-v1";
