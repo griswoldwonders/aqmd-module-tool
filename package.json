@@ -8,6 +8,7 @@
     "update:runtime-lock": "node scripts/update-mobile-runtime-lock.mjs",
     "test:runtime": "playwright test",
     "test:sites": "node --test tests/sites-worker.test.mjs",
+    "test:evidence-boundary": "node --test tests/evidence-boundary.test.mjs",
     "dev": "vite",
     "build": "tsc && vite build && node scripts/prepare-sites-build.mjs"
   },
