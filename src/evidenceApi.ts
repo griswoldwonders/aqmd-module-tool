@@ -55,10 +55,32 @@ export function createObservationPeriod(session: SaasSession, input: { organizat
 export function listEvidenceMetrics(session: SaasSession, organizationId: string, siteId: string) {
   return rest<EvidenceMetricValue[]>(session, `evidence_metric_values?organization_id=eq.${organizationId}&site_id=eq.${siteId}&select=*&order=calculated_at.desc`);
 }
-export function insertCommuteObservations(session: SaasSession, rows: CommuteObservation[]) {
-  if (!rows.length) return Promise.resolve([] as CommuteObservation[]);
-  return rest<CommuteObservation[]>(session, "evidence_commute_observations", { method: "POST", body: JSON.stringify(rows.map(row => ({ ...row, created_by: session.user.id }))) });
+
+function prepareExternalEvidenceRow(row: CommuteObservation) {
+  const claimedSource = row.original_payload?.source_system;
+  if (claimedSource === "relay_rider") {
+    throw new Error("Relay Rider-originated evidence is read-only in the AQMD browser; use the server-side projection boundary.");
+  }
+  return {
+    ...row,
+    original_payload: {
+      ...(row.original_payload ?? {}),
+      source_system: "external_institutional_import",
+    },
+  };
 }
+
+export function insertExternalCommuteObservations(session: SaasSession, rows: CommuteObservation[]) {
+  if (!rows.length) return Promise.resolve([] as CommuteObservation[]);
+  const prepared = rows.map(prepareExternalEvidenceRow);
+  return rest<CommuteObservation[]>(session, "evidence_commute_observations", { method: "POST", body: JSON.stringify(prepared.map(row => ({ ...row, created_by: session.user.id }))) });
+}
+
+/** @deprecated Compatibility wrapper. It is still external-only and cannot author Relay Rider projections. */
+export function insertCommuteObservations(session: SaasSession, rows: CommuteObservation[]) {
+  return insertExternalCommuteObservations(session, rows);
+}
+
 export function insertValidationIssues(session: SaasSession, args: { organizationId: string; siteId: string; baselineId?: string | null; observationPeriodId?: string | null; issues: ValidationIssue[] }) {
   if (!args.issues.length) return Promise.resolve([] as unknown[]);
   return rest<unknown[]>(session, "evidence_validation_issues", { method: "POST", body: JSON.stringify(args.issues.map(issue => ({ organization_id: args.organizationId, site_id: args.siteId, baseline_id: args.baselineId ?? null, observation_period_id: args.observationPeriodId ?? null, commute_observation_id: null, rule_code: issue.code, severity: issue.severity, message: `CSV row ${issue.row}: ${issue.message}`, resolution_hint: issue.severity === "blocking_error" ? "Correct the source row or explicitly exclude it before locking the baseline." : "Review before finalizing the evidence period." }))) });

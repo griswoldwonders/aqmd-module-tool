@@ -37,3 +37,6 @@ jobs:
 
       - name: Run static worker tests
         run: npm run test:sites
+
+      - name: Enforce Relay Rider evidence authoring boundary
+        run: npm run test:evidence-boundary
