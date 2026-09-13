@@ -9,7 +9,10 @@ export type RelayRiderAqmdFeedRow = Rule2202SurveyRecord & {
   site_name: string;
   cohort_id: string;
   cohort_name: string;
+  origin_zone: string;
   destination_zone: string;
+  arrival_window: string;
+  departure_window: string;
   schedule_flex_minutes: number;
   vehicle_fuel_type: string;
   parking_difficulty: string;
