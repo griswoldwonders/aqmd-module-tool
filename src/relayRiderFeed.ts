@@ -120,7 +120,7 @@ export function toRule2202SurveyRecords(
     reporting_year_id: reportingYearId,
     source_id: row.source_import_id,
     source_row_key: `${row.source_import_id}:${row.source_row_number}`,
-    participant_key: row.external_id,
+    participant_key: `rr_record_${row.record_id}`,
     observation_date: row.record_updated_at.slice(0, 10),
     commute_mode: row.commute_mode,
     vehicle_occupancy: row.vehicle_occupancy,
@@ -132,6 +132,7 @@ export function toRule2202SurveyRecords(
     original_payload: {
       relay_rider_contract: feed.contract_version,
       relay_rider_record_id: row.record_id,
+      source_system: "relay_rider_projection",
       source_sha256: row.source_sha256,
       source_provenance: row.source_provenance,
       source_row_number: row.source_row_number,
