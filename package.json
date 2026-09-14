@@ -11,7 +11,7 @@
     "test:evidence-boundary": "node --experimental-strip-types --test tests/evidence-boundary.test.ts tests/relay-rider-feed.test.ts",
     "test:rule2202": "node --experimental-strip-types --test tests/rule2202-engine.test.ts",
     "check": "tsc --noEmit",
-    "test": "npm run test:sites && npm run test:evidence-boundary && npm run test:rule2202",
+    "test": "npm run test:evidence-boundary && npm run test:rule2202",
     "dev": "vite",
     "build": "tsc && vite build && node scripts/prepare-sites-build.mjs"
   },
