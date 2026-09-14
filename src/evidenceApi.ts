@@ -1,4 +1,12 @@
 import type { SaasSession } from "./saasApi";
+import { prepareExternalEvidenceRow } from "./evidenceProvenance";
+
+export {
+  EXTERNAL_INSTITUTION_IMPORT_SOURCE,
+  classifyEvidenceSource,
+  isRelayRiderProjectedEvidence,
+  prepareExternalEvidenceRow,
+} from "./evidenceProvenance";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL ?? "https://dzrqrqfxcihvufvyctbt.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "sb_publishable_hLCfTlWFEQRkwKUwz5Wv2g_DwoVqPy1";
@@ -54,20 +62,6 @@ export function createObservationPeriod(session: SaasSession, input: { organizat
 }
 export function listEvidenceMetrics(session: SaasSession, organizationId: string, siteId: string) {
   return rest<EvidenceMetricValue[]>(session, `evidence_metric_values?organization_id=eq.${organizationId}&site_id=eq.${siteId}&select=*&order=calculated_at.desc`);
-}
-
-function prepareExternalEvidenceRow(row: CommuteObservation) {
-  const claimedSource = row.original_payload?.source_system;
-  if (claimedSource === "relay_rider") {
-    throw new Error("Relay Rider-originated evidence is read-only in the AQMD browser; use the server-side projection boundary.");
-  }
-  return {
-    ...row,
-    original_payload: {
-      ...(row.original_payload ?? {}),
-      source_system: "external_institutional_import",
-    },
-  };
 }
 
 export function insertExternalCommuteObservations(session: SaasSession, rows: CommuteObservation[]) {

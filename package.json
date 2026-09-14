@@ -8,7 +8,10 @@
     "update:runtime-lock": "node scripts/update-mobile-runtime-lock.mjs",
     "test:runtime": "playwright test",
     "test:sites": "node --test tests/sites-worker.test.mjs",
-    "test:evidence-boundary": "node --test tests/evidence-boundary.test.mjs",
+    "test:evidence-boundary": "node --experimental-strip-types --test tests/evidence-boundary.test.ts tests/relay-rider-feed.test.ts",
+    "test:rule2202": "node --experimental-strip-types --test tests/rule2202-engine.test.ts",
+    "check": "tsc --noEmit",
+    "test": "npm run test:evidence-boundary && npm run test:rule2202",
     "dev": "vite",
     "build": "tsc && vite build && node scripts/prepare-sites-build.mjs"
   },

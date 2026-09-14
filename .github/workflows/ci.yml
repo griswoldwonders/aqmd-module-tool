@@ -29,6 +29,9 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
+      - name: Typecheck
+        run: npm run check
+
       - name: Audit dependencies
         run: npm audit --audit-level=high
 
@@ -40,3 +43,6 @@ jobs:
 
       - name: Enforce Relay Rider evidence authoring boundary
         run: npm run test:evidence-boundary
+
+      - name: Run Rule 2202 engine tests
+        run: npm run test:rule2202
